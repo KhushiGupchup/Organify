@@ -5,6 +5,11 @@ const overlay = document.getElementById('overlay');
 const carousel = document.getElementById("carousel");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
+
+
+const newsletterForm = document.getElementById('newsletterForm');
+const newsletterEmail = document.getElementById('newsletterEmail');
+
 menuBtn.onclick = () => {
       sideMenu.classList.add('open');
       overlay.classList.add('show');
@@ -77,6 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(title);
 });
+
+  newsletterForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = newsletterEmail.value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(email.toLowerCase())) {
+      alert('Thank you for subscribing!');
+      newsletterEmail.value = '';
+    } else {
+      alert('Please enter a valid email address.');
+      newsletterEmail.focus();
+    }
+  });
+
 
 
 
